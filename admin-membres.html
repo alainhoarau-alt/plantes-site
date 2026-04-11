@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Admin Membres</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page-don">
+
+<h1>👥 Dashboard des membres</h1>
+
+<!-- 🔍 RECHERCHE -->
+<input type="text" id="recherche" placeholder="🔍 Rechercher un membre...">
+
+<!-- 📊 TABLEAU -->
+<table id="table-membres">
+    <thead>
+        <tr>
+            <th onclick="trierTableau(0)">Nom</th>
+            <th onclick="trierTableau(1)">Prénom</th>
+            <th onclick="trierTableau(2)">Email</th>
+            <th onclick="trierTableau(3)">Téléphone</th> <!-- 🔥 ajouté tri -->
+            <th onclick="trierTableau(4)">Type</th>
+            <th onclick="trierTableau(5)">Date</th> <!-- 🔥 ajouté tri -->
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!-- 🗑️ BOUTON -->
+<button id="vider-membres" class="btn">🗑️ Vider les membres</button>
+
+<!-- JS -->
+<script src="adhesion.js"></script>
+<script type="module" src="firebase.js"></script>
+</body>
+</html>

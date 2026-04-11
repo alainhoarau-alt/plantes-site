@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Actions solidaires | Plantes Tropicales Réunion</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page-actions">
+
+<!-- MENU -->
+<nav>
+    <a href="index.html">Accueil</a>
+    <a href="association.html">Association</a>
+    <a href="plantes.html">Plantes tropicales</a>
+    <a href="marche.html">Marché</a>
+    <a href="actions.html">Actions solidaires</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<!-- PAGE ACTIONS -->
+<section>
+
+<h1>🤝 Actions solidaires</h1>
+
+<p>
+Les Ouvriers 974 organisent des actions solidaires pour aider
+les familles et les enfants dans le besoin.
+</p>
+
+<div class="gallery">
+
+<div class="action"><img src="images/mission1.jpg"><p>Distribution de semences par l'association Les Ouvriers 974.</p></div>
+<div class="action"><img src="images/mission2.jpg"><p>Distribution de riz pour les familles.</p></div>
+<div class="action"><img src="images/mission3.jpg"><p>Accueil des villageois à Analapatsy.</p></div>
+<div class="action"><img src="images/mission4.jpg"><p>Visite d'une école de brousse.</p></div>
+<div class="action"><img src="images/mission5.jpg"><p>Enfants des villages.</p></div>
+<div class="action"><img src="images/mission6.jpg"><p>Les enfants vont chercher de l'eau au fleuve.</p></div>
+<div class="action"><img src="images/mission7.jpg"><p>Visite pour un projet d'irrigation.</p></div>
+<div class="action"><img src="images/mission8.jpg"><p>Le marché.</p></div>
+<div class="action"><img src="images/mission9.jpg"><p>Organisation d'actions solidaires locales.</p></div>
+<div class="action"><img src="images/mission10.jpg"><p>Rencontre avec les enfants.</p></div>
+<div class="action"><img src="images/mission11.jpg"><p>Aide humanitaire et soutien aux enfants.</p></div>
+<div class="action"><img src="images/mission12.jpg"><p>Visite des plantations.</p></div>
+<div class="action"><img src="images/mission13.jpg"><p>Suivi des plantations.</p></div>
+<div class="action"><img src="images/mission14.jpg"><p>Réunion avec les responsables de villages.</p></div>
+<div class="action"><img src="images/mission15.jpg"><p>Actions solidaires menées par l'association Les Ouvriers 974.</p></div>
+
+</div>
+
+</section>
+
+<!-- ZOOM IMAGE -->
+<div id="zoom" class="zoom">
+  <span class="prev">&#10094;</span>
+  <img id="zoom-img">
+  <span class="next">&#10095;</span>
+</div>
+
+<!-- SCRIPT -->
+<script>
+
+const images = document.querySelectorAll(".gallery img");
+const zoom = document.getElementById("zoom");
+const zoomImg = document.getElementById("zoom-img");
+
+let current = 0;
+
+// OUVERTURE IMAGE
+images.forEach((img, index) => {
+  img.onclick = function () {
+    current = index;
+    showImage();
+  }
+});
+
+function showImage() {
+  zoom.style.display = "flex";
+  zoomImg.src = images[current].src;
+}
+
+// NEXT
+document.querySelector(".next").onclick = function () {
+  current++;
+  if (current >= images.length) current = 0;
+  showImage();
+}
+
+// PREV
+document.querySelector(".prev").onclick = function () {
+  current--;
+  if (current < 0) current = images.length - 1;
+  showImage();
+}
+
+// FERMETURE
+zoom.onclick = function (e) {
+  if (e.target === zoom) {
+    zoom.style.display = "none";
+  }
+}
+
+</script>
+
+<script type="module" src="firebase.js"></script>
+
+</body>
+</html>

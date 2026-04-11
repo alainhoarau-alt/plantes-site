@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Admin - Les Ouvriers 974</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+body {
+  font-family: Arial;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background: #2c3e50;
+  color: white;
+}
+
+.btn-supprimer {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+#form-paiement input,
+#form-paiement select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+#form-paiement button {
+  padding: 10px;
+  cursor: pointer;
+}
+</style>
+
+</head>
+<body class="page-admin">
+
+
+<div class="admin-header">
+  
+  <div class="left-header">
+    <h1 class="titre-admin">📊 ADMIN - Association</h1>
+    <a href="association.html" class="btn-retour">⬅ Retour à l'association</a>
+  </div>
+ <button onclick="logout()" class="btn-logout">
+    🔓 Déconnexion
+  </button>
+</div>
+<!-- 🔥 BOUTON DONNÉES TEST -->
+<div style="margin: 15px 0;">
+  <button onclick="ajouterDonneesTest()">⚡ Générer données test</button>
+</div>
+
+<!-- ===================== -->
+<!-- 💳 VALIDER PAIEMENT -->
+<!-- ===================== -->
+<h2>💳 Valider un paiement Stripe</h2>
+
+<form id="form-paiement">
+
+  <input type="text" id="nom" placeholder="Nom" required>
+  <input type="text" id="prenom" placeholder="Prénom" required>
+  <input type="email" id="email" placeholder="Email" required>
+
+  <select id="type">
+    <option value="adhesion">Adhésion</option>
+    <option value="don">Don</option>
+  </select>
+
+  <input type="number" id="montant" placeholder="Montant (€)" required>
+
+  <button type="submit">✅ Valider paiement</button>
+
+</form>
+
+<p id="message-paiement"></p>
+
+<!-- ===================== -->
+<!-- 👥 MEMBRES -->
+<!-- ===================== -->
+<h2>👥 Membres</h2>
+
+<input type="text" id="search" placeholder="🔍 Rechercher..." style="padding:8px; margin-bottom:10px;">
+
+<p id="total-membres">Chargement...</p>
+
+<table id="table-membres">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<!-- ===================== -->
+<!-- 💰 DONS -->
+<!-- ===================== -->
+<h2>💰 Dons</h2>
+
+<p id="total-dons">Chargement...</p>
+
+<table id="table-dons">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Montant</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<button id="vider-dons">🗑️ Supprimer tous les dons</button>
+
+<!-- ===================== -->
+<!-- 🔥 SCRIPT ADMIN -->
+<!-- ===================== -->
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

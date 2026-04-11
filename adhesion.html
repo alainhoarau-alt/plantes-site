@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Adhésion - Les Ouvriers 974</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page-adhesion">
+
+<!-- 🔙 RETOUR -->
+<a href="association.html" class="btn-retour">⬅ Retour à l'association</a>
+
+<h1>🤝 Devenir membre des ouvriers 974</h1>
+
+<!-- ===================== -->
+<!-- 📝 FORMULAIRE -->
+<!-- ===================== -->
+<form id="form-adhesion">
+
+  <label>Nom :</label>
+  <input type="text" id="nom" required>
+
+  <label>Prénom :</label>
+  <input type="text" id="prenom" required>
+
+  <label>Email :</label>
+  <input type="email" id="email" required>
+
+  <label>Téléphone :</label>
+  <input type="tel" id="telephone">
+
+  <label>Adresse :</label>
+  <input type="text" id="adresse">
+
+  <label>Adhésion annuelle :</label>
+<div class="adhesion-box">
+  <strong>Adhésion annuelle</strong><br>
+  <span>Montant : 50€</span>
+</div>
+  <label style="display:flex; align-items:center; gap:10px; margin-top:10px;">
+    <input type="checkbox" id="newsletter">
+    Je souhaite recevoir les actualités
+  </label>
+
+  <!-- ✅ BOUTON ENREGISTRER -->
+  <button type="submit" class="btn">
+    Enregistrer mes informations
+  </button>
+
+</form>
+
+<!-- 💳 PAIEMENT STRIPE -->
+<div style="text-align:center; margin-top:20px;">
+  <a href="https://buy.stripe.com/test_00w6oHc961S80LBaKB6Na01"
+     target="_blank"
+     class="btn"
+     style="display:inline-block; margin-top:15px;">
+     💳 Payer mon adhésion
+  </a>
+</div>
+
+<!-- 💬 MESSAGE -->
+<p id="message"></p>
+
+<!-- ===================== -->
+<!-- 🔥 SCRIPTS -->
+<!-- ===================== -->
+
+<!-- FIREBASE -->
+<script type="module" src="firebase.js"></script>
+
+<!-- TON SCRIPT -->
+<script type="module" src="adhesion.js"></script>
+
+</body>
+</html>

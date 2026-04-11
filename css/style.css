@@ -1,0 +1,488 @@
+/* ===================================== */
+/* RESET */
+/* ===================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================================== */
+/* BODY */
+/* ===================================== */
+body {
+    font-family: Arial, sans-serif;
+    background: url("../images/plante1.jpg") center/cover no-repeat fixed;
+    color: white;
+}
+
+/* ===================================== */
+/* MENU */
+/* ===================================== */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #145c2a;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00ff88;
+}
+
+/* ===================================== */
+/* HERO */
+/* ===================================== */
+/* ===================================== */
+/* HERO */
+/* ===================================== */
+
+.hero {
+    position: relative;
+    padding: 100px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    background: url("../images/image page1.png") no-repeat right center;
+    background-size: cover;
+
+    min-height: 500px;
+}
+
+/* overlay léger pour lisibilité */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 1;
+}
+
+/* CONTENU */
+.hero-box {
+    position: relative;
+    z-index: 2;
+
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 15px;
+
+    max-width: 600px;
+    margin-left: 50px;
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+
+    animation: fadeInUp 1s ease;
+}
+
+/* TITRE */
+.hero-box h1 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+/* TEXTE */
+.hero-box p {
+    color: #f1f1f1;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* BOUTON */
+.hero-box a {
+    display: inline-block;
+    background: #2e7d32;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-box a:hover {
+    background: #1b5e20;
+}/* ===================================== */
+/* SECTIONS */
+/* ===================================== */
+section {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0,0,0,0.5);
+}
+
+/* ===================================== */
+/* GRID */
+/* ===================================== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+/* ===================================== */
+/* CARD WOW */
+/* ===================================== */
+.card {
+    background: white;
+    color: black;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.card img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    background: #111;
+}
+
+/* ===================================== */
+/* ZOOM IMAGE */
+/* ===================================== */
+.zoom {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.zoom img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px black;
+}
+
+/* ===================================== */
+/* TEXTE CARD */
+/* ===================================== */
+.card h3 {
+    padding: 10px;
+}
+
+.card p {
+    padding: 0 10px 15px;
+}
+
+/* ===================================== */
+/* BOUTON WOW */
+/* ===================================== */
+.btn {
+    background: linear-gradient(135deg, #1fa84a, #2ecc71);
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* ===================================== */
+/* FORM ADHESION */
+/* ===================================== */
+#form-adhesion {
+    background: rgba(255,255,255,0.95);
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+
+#form-adhesion input,
+#form-adhesion select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#message {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ===================================== */
+/* TABLE ADMIN */
+/* ===================================== */
+#table-membres,
+#table-dons {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#table-membres th,
+#table-dons th {
+    background: #1fa84a;
+    color: white;
+    padding: 10px;
+}
+
+#table-membres td,
+#table-dons td {
+    background: white;
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+#table-membres tr:nth-child(even),
+#table-dons tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+/* ===================================== */
+/* ADMIN */
+/* ===================================== */
+.btn-supprimer {
+    background: #e60023;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-supprimer:hover {
+    background: #b3001b;
+}
+
+#total-dons,
+#total-membres {
+    background: rgba(255,255,255,0.9);
+    color: black;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* ===================================== */
+/* ANIMATION */
+/* ===================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================== */
+/* RESPONSIVE */
+/* ===================================== */
+@media (max-width:768px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+/* =============================== */
+/* 🌿 TITRE MARCHE */
+/* =============================== */
+
+.page-marche h1 {
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.5);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+/* ========================= */
+/* FORMULAIRE ADHESION */
+/* ========================= */
+
+#form-adhesion {
+  background: rgba(255,255,255,0.95);
+  color: #222;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+/* labels */
+#form-adhesion label {
+  color: #222;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+/* champs */
+#form-adhesion input,
+#form-adhesion select {
+  color: #222;
+}
+
+/* ========================= */
+/* TITRE PAGE ADHESION */
+/* ========================= */
+
+.page-adhesion h1 {
+  color: white;
+  background: rgba(0,0,0,0.6);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+/* ========================= */
+/* TITRES ADMIN */
+/* ========================= */
+
+.page-admin .titre-admin {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75); /* 🔥 plus foncé */
+  padding: 12px 25px;
+  display: inline-block;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: bold;
+
+  /* 💡 améliore énormément la lisibilité */
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+}
+/* 🔥 Titres sections (ex: Membres, Paiement) */
+.page-admin h2 {
+  color: #00ffcc;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 15px;
+  display: inline-block;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+/* ton CSS existant */
+
+/* ========================= */
+/* TITRES ADMIN */
+/* ========================= */
+
+.page-admin .admin-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.page-admin .btn-retour {
+  color: #00ccff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.page-admin .btn-retour:hover {
+  text-decoration: underline;
+}
+/* ========================= */
+/* TABLEAU ADMIN MODERNE */
+/* ========================= */
+
+.page-admin table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* HEADER */
+.page-admin thead {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+}
+
+.page-admin th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* LIGNES */
+.page-admin td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* HOVER */
+.page-admin tbody tr:hover {
+  background: #f5f7fa;
+  transition: 0.2s;
+}
+
+/* LIGNES ALTERNÉES */
+.page-admin tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* ========================= */
+/* BOUTON ACTION (SUPPRIMER) */
+/* ========================= */
+
+/* ========================= */
+/* BOUTON SUPPRIMER */
+/* ========================= */
+
+.page-admin .btn-supprimer {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.page-admin .btn-supprimer:hover {
+  background: #e60000;
+  transform: scale(1.05);
+}
+.adhesion-box {
+  background: #f5f5f5;
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 10px;
+  font-size: 16px;
+}

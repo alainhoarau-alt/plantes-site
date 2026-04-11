@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Faire un don - Les Ouvriers 974</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- MENU -->
+<nav>
+    <a href="index.html">Accueil</a>
+    <a href="association.html">Association</a>
+    <a href="plantes.html">Plantes tropicales</a>
+    <a href="marche.html">Marché</a>
+    <a href="dons.html">Dons</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+        <h1>💚 Soutenir notre association</h1>
+        <p>Chaque don aide à développer nos actions solidaires à MADAGASCAR</p>
+    </div>
+</header>
+
+<!-- CONTENU -->
+<section>
+    <h2>Pourquoi faire un don ?</h2>
+
+    <p>
+        L'association <strong>Les Ouvriers 974</strong> œuvre pour 
+        le développement d'actions solidaires à La Réunion et MADAGASCAR.
+    </p>
+
+    <p>Vos dons permettent de :</p>
+
+    <ul>
+        <li>🌱 Développer et donner accès à l'éducation</li>
+        <li>🤝 Soutenir des projets solidaires</li>
+        <li>📚 Sensibiliser à la biodiversité</li>
+        <li>🌍 Promouvoir l’agriculture locale</li>
+    </ul>
+</section>
+
+<!-- DON -->
+<section>
+
+    <h2>Faire un don</h2>
+    <p id="total-dons">💚 Paiement sécurisé via Stripe</p>
+    <p>Choisissez le montant que vous souhaitez offrir :</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>10€</h3>
+            <p>Un petit geste 🌱</p>
+            <button class="btn" onclick="payer(1000)">💚 Donner</button>
+        </div>
+
+        <div class="card">
+            <h3>25€</h3>
+            <p>Soutien utile 🤝</p>
+            <button class="btn" onclick="payer(2500)">💚 Donner</button>
+        </div>
+
+        <div class="card">
+            <h3>50€</h3>
+            <p>Impact concret 🌿</p>
+            <button class="btn" onclick="payer(5000)">💚 Donner</button>
+        </div>
+
+        <div class="card">
+            <h3>100€</h3>
+            <p>Soutien majeur 💚</p>
+            <button class="btn" onclick="payer(10000)">💚 Donner</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DON LIBRE -->
+<section style="text-align:center; margin-top:30px;">
+    <h3>💚 Faire un don libre</h3>
+
+    <input 
+        type="number" 
+        id="montant" 
+        placeholder="Montant en €"
+        style="padding:10px; font-size:16px; width:200px; margin-bottom:10px;"
+    >
+
+    <br>
+
+    <button type="button" class="btn" onclick="payerLibre()" style="font-size:18px; padding:15px 25px;">
+        💳 Donner
+    </button>
+</section>
+
+<!-- CONTACT -->
+<section>
+
+    <h2>Autres moyens de soutien</h2>
+
+    <p>Vous pouvez aussi nous contacter directement pour :</p>
+
+    <ul>
+        <li>💳 Virement bancaire</li>
+        <li>🤝 Partenariats</li>
+        <li>🎁 Dons matériels</li>
+    </ul>
+
+    <a href="contact.html" class="btn">Nous contacter</a>
+
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© Les Ouvriers 974</p>
+</div>
+
+<!-- 🔥 FIREBASE -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAgNCQWXZMBtfP4OZ7iAgl1DoGb_AnFPJ8",
+    authDomain: "plantes-tropicales-reunion.firebaseapp.com",
+    projectId: "plantes-tropicales-reunion",
+    storageBucket: "plantes-tropicales-reunion.firebasestorage.app",
+    messagingSenderId: "309600533699",
+    appId: "1:309600533699:web:5b6e7d723e45fcb5dbf676"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.db = db;
+</script>
+
+<!-- 💳 SCRIPT PAIEMENT -->
+<script>
+async function payer(montant) {
+  const res = await fetch("http://localhost:3000/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "SECRET123"
+    },
+    body: JSON.stringify({
+      amount: montant,
+      email: "client@test.com"
+    })
+  });
+
+  const data = await res.json();
+  window.location.href = data.url;
+}
+
+function payerLibre() {
+  const valeur = document.getElementById("montant").value;
+
+  if (!valeur || valeur <= 0) {
+    alert("Veuillez entrer un montant valide");
+    return;
+  }
+
+  payer(valeur * 100);
+}
+</script>
+
+</body>
+</html>

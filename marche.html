@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marché des plantes</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* PAGE */
+.market {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding-bottom: 100px;
+}
+
+/* TITRE VISIBLE */
+#title {
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.5);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* FORM */
+.form {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.form input, .form textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* SEARCH */
+.search-box {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.search-box input {
+  width: 300px;
+  max-width: 90%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  color: black;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 10px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+/* DELETE */
+.delete {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+/* PAGINATION */
+#pagination button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  background: #1fa84a;
+  color: white;
+  cursor: pointer;
+}
+
+#pagination button:disabled {
+  background: #ccc;
+}
+
+/* ZOOM */
+.zoom {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.zoom img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+</style>
+
+</head>
+
+<body class="page-marche">
+
+<nav>
+<a href="index.html">Accueil</a>
+<a href="association.html">Association</a>
+<a href="plantes.html">Plantes tropicales</a>
+<a href="marche.html">Marché</a>
+<a href="actions.html">Actions</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<div class="market">
+
+<h1 id="title">🌿 Marché des plantes</h1>
+
+<form class="form" id="form">
+<input id="plante" placeholder="Nom plante" required>
+<input id="email" placeholder="Email" required>
+<input id="prix" placeholder="Prix €">
+<textarea id="desc" placeholder="Description"></textarea>
+<input type="file" id="image" accept="image/*">
+<button type="submit">Ajouter</button>
+</form>
+
+<div class="search-box">
+<input type="text" id="search" placeholder="🔍 Rechercher...">
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div id="pagination" style="text-align:center; margin-top:20px;">
+  <button id="prev">⬅️ Précédent</button>
+  <span id="page-info"></span>
+  <button id="next">Suivant ➡️</button>
+</div>
+
+</div>
+
+<!-- 🔍 ZOOM IMAGE -->
+<div id="zoom" class="zoom">
+  <img id="zoom-img">
+</div>
+
+<!-- 🔥 SCRIPT -->
+<script type="module" src="marche.js"></script>
+
+</body>
+</html>

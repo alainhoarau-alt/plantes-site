@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plantes Tropicales Réunion</title>
+
+<meta name="description" content="Découvrez les plantes tropicales de La Réunion et les actions solidaires de l'association Les Ouvriers 974.">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+<!-- MENU -->
+<nav>
+  <a href="index.html">Accueil</a>
+  <a href="association.html">Association</a>
+  <a href="plantes.html">Plantes tropicales</a>
+  <a href="marche.html">Marché</a>
+  <a href="actions.html">Actions</a>
+  <a href="contact.html">Contact</a>
+
+  <!-- ADMIN -->
+  <a href="admin.html" style="color:red;">⚙️ Admin</a>
+</nav><!-- HERO -->
+<section class="hero">
+
+<div class="hero-box">
+<h1>🌿 Plantes Tropicales Réunion</h1>
+
+<p>
+Découvrez les plantes tropicales 🌴  
+et les actions solidaires de l'association Les Ouvriers 974
+</p>
+
+<a href="plantes.html" class="btn">Découvrir les plantes</a>
+</div>
+
+</section>
+
+<!-- PLANTES -->
+<section>
+
+<h2>🌿 Plantes tropicales</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="images/jardin1.jpg" alt="jardin">
+<h3>Jardin</h3>
+<p>Vue extérieure</p>
+</div>
+
+<div class="card">
+<img src="images/heliconia.jpg" alt="heliconia">
+<h3>Heliconia</h3>
+<p>Plante tropicale décorative</p>
+</div>
+
+<div class="card">
+<img src="images/vacoa.jpg" alt="vacoa">
+<h3>Vacoa</h3>
+<p>Plante utilisée en vannerie</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FACEBOOK -->
+<section>
+
+<h2>📢 Suivez-nous sur Facebook</h2>
+
+<p>Découvrez nos actions solidaires et nos plantes tropicales</p>
+
+<a href="https://www.facebook.com/ALAIN.HOARAU.95180" target="_blank" class="btn">
+Voir la page Facebook
+</a>
+
+</section>
+
+<!-- CARTE -->
+<section>
+
+<h2>🌿 Carte des plantes tropicales de La Réunion</h2>
+
+<div id="map"></div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<p>© 2026 Plantes Tropicales Réunion</p>
+<p>Association Les Ouvriers 974</p>
+</footer>
+
+<script>
+const map = L.map('map').setView([-21.1151, 55.5364], 10);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+</script>
+<script type="module" src="firebase.js"></script>
+</body>
+</html>

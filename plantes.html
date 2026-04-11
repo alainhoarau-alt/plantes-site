@@ -1,0 +1,292 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plantes tropicales | Plantes Tropicales Réunion</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Leaflet -->
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<nav>
+    <a href="index.html">Accueil</a>
+    <a href="association.html">Association</a>
+    <a href="plantes.html">Plantes tropicales</a>
+    <a href="marche.html">Marché</a>
+    <a href="actions.html">Actions solidaires</a>
+    <a href="contact.html">Contact</a>
+</nav>
+<!-- CARTE DES PLANTES -->
+
+<section>
+
+<h2>🌿 Carte des plantes de La Réunion</h2>
+
+<div id="map"></div>
+
+</section>
+
+
+<!-- PAGE PLANTES -->
+
+<section class="plantes-page">
+
+<h1>🌿 Plantes tropicales</h1>
+
+<input 
+type="text"
+id="searchPlant"
+placeholder="🔎 Rechercher une plante..."
+class="search-bar">
+
+
+<div class="cards">
+
+<div class="card">
+<img src="images/heliconia.jpg">
+<h3>Heliconia</h3>
+<p>Plante spectaculaire aux fleurs en forme de becs.</p>
+</div>
+
+<div class="card">
+<img src="images/rose porcelaine.jpg">
+<h3>Rose de porcelaine</h3>
+<p>Fleur ressemblant à la porcelaine.</p>
+</div>
+
+<div class="card">
+<img src="images/vacoa.jpg">
+<h3>Vacoa</h3>
+<p>Plante utilisée en vannerie.</p>
+</div>
+
+<div class="card">
+<img src="images/barbadine.jpg">
+<h3>Barbadine</h3>
+<p>Variété de fruit de la passion géante.</p>
+</div>
+
+<div class="card">
+<img src="images/caloupilé.jpg">
+<h3>Caloupilé</h3>
+<p>Feuilles utilisées dans la cuisine créole.</p>
+</div>
+
+<div class="card">
+<img src="images/cerises à cotes.jpg">
+<h3>Cerises à côtes</h3>
+<p>Petits fruits acidulés.</p>
+</div>
+
+<div class="card">
+<img src="images/clou de girofle.jpg">
+<h3>Clou de girofle</h3>
+<p>Épice tropicale.</p>
+</div>
+
+<div class="card">
+<img src="images/combava.jpg">
+<h3>Combava</h3>
+<p>Agrume très utilisé dans la cuisine.</p>
+</div>
+
+<div class="card">
+<img src="images/costus barbatus.jpg">
+<h3>Costus barbatus</h3>
+<p>Variété de gingembre à fleur.</p>
+</div>
+
+<div class="card">
+<img src="images/goyaviers.jpg">
+<h3>Goyavier</h3>
+<p>Variété à fruits rouges.</p>
+</div>
+
+<div class="card">
+<img src="images/hibiscus.jpg">
+<h3>Hibiscus</h3>
+<p>Plante tropicale aux nombreuses variétés.</p>
+</div>
+
+<div class="card">
+<img src="images/longose.jpg">
+<h3>Longose</h3>
+<p>Fleurs tropicales colorées.</p>
+</div>
+
+<div class="card">
+<img src="images/manguier.jpg">
+<h3>Manguier</h3>
+<p>Arbre fruitier tropical.</p>
+</div>
+
+<div class="card">
+<img src="images/monstera3.jpg">
+<h3>Monstera</h3>
+<p>Liane tropicale spectaculaire.</p>
+</div>
+
+<div class="card">
+<img src="images/monstera1.jpg">
+<h3>Monstera</h3>
+<p>Plante tropicale décorative.</p>
+</div>
+
+<div class="card">
+<img src="images/veranda.jpg">
+<h3>Véranda tropicale</h3>
+<p>Petit coin tropical.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ZOOM IMAGE -->
+
+<div id="zoom" class="zoom">
+
+<span class="prev">&#10094;</span>
+
+<div class="zoom-content">
+
+<img id="zoom-img">
+
+<h2 id="zoom-title"></h2>
+
+<p id="zoom-text"></p>
+
+</div>
+
+<span class="next">&#10095;</span>
+
+</div>
+
+
+<!-- SCRIPTS -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+/* CARTE */
+
+var map=L.map('map').setView([-21.1151,55.5364],9);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+attribution:'© OpenStreetMap'
+}).addTo(map);
+
+L.marker([-21.1151,55.5364]).addTo(map).bindPopup("🌺 Rose de porcelaine");
+L.marker([-21.3583,55.7671]).addTo(map).bindPopup("🌿 Vacoa<br>Saint-Philippe - Sud sauvage");L.marker([-21.23,55.52]).addTo(map).bindPopup("🌺 Hibiscus tropical");
+L.marker([-21.2,55.45]).addTo(map).bindPopup("🍋 Combava");
+L.marker([-21.014047,55.269527])
+.addTo(map)
+.bindPopup("🌴 Cocotier<br>Plante tropicale emblématique des littoraux");
+L.marker([-21.1350,55.6256]).addTo(map).bindPopup("🌿 Fougères arborescentes");
+
+/* ZOOM IMAGES */
+
+const cards=document.querySelectorAll(".card");
+const zoom=document.getElementById("zoom");
+const zoomImg=document.getElementById("zoom-img");
+const zoomTitle=document.getElementById("zoom-title");
+const zoomText=document.getElementById("zoom-text");
+
+let current=0;
+
+cards.forEach((card,index)=>{
+
+card.onclick=function(){
+current=index;
+showImage();
+}
+
+});
+
+function showImage(){
+
+zoom.style.display="flex";
+
+const img=cards[current].querySelector("img");
+const title=cards[current].querySelector("h3");
+const text=cards[current].querySelector("p");
+
+zoomImg.src=img.src;
+zoomTitle.textContent=title.textContent;
+zoomText.textContent=text.textContent;
+
+}
+
+document.querySelector(".next").onclick=function(){
+
+current++;
+
+if(current>=cards.length){current=0;}
+
+showImage();
+
+}
+
+document.querySelector(".prev").onclick=function(){
+
+current--;
+
+if(current<0){current=cards.length-1;}
+
+showImage();
+
+}
+
+zoom.onclick=function(e){
+
+if(e.target===zoom){
+zoom.style.display="none";
+}
+
+}
+
+
+/* RECHERCHE */
+
+const search=document.getElementById("searchPlant");
+const plants=document.querySelectorAll(".card");
+
+search.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+plants.forEach(function(card){
+
+let name=card.querySelector("h3").textContent.toLowerCase();
+let text=card.querySelector("p").textContent.toLowerCase();
+
+if(name.includes(value)||text.includes(value)){
+card.style.display="";
+}else{
+card.style.display="none";
+}
+
+});
+
+});
+
+</script>
+<script type="module" src="firebase.js"></script>
+</body>
+</html>
+```
