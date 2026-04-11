@@ -6,12 +6,11 @@ const app = express();
 
 app.use("/webhook", express.raw({ type: "application/json" }));
 
-const stripe = Stripe("CLE_STRIPE_ICI");
+const stripe = Stripe(process.env.STRIPEKEY);
 const endpointSecret = "whsec_d1a1d0d2748d46b0dee6...";
-const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_KEY))
 });
 
 const db = admin.firestore();
@@ -45,6 +44,8 @@ app.post("/webhook", (req, res) => {
   res.sendStatus(200);
 });
 
-app.listen(3000, () => {
-  console.log("🚀 Serveur lancé sur http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("🚀 Serveur lancé");
 });
