@@ -4,9 +4,7 @@ const admin = require("firebase-admin");
 
 const app = express();
 
-// =========================
 // ✅ CORS
-// =========================
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
@@ -19,14 +17,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// =========================
-// 🔐 STRIPE
-// =========================
+// 🔐 STRIPE (via variable d'environnement)
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
-// =========================
-// 🔥 FIREBASE
-// =========================
+// 🔥 FIREBASE (via variable d'environnement)
 const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
 
 admin.initializeApp({
@@ -34,6 +28,7 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+
 
 // =========================
 // 🔔 WEBHOOK
@@ -44,12 +39,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), (req, res) => {
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(
-      req.body,
-      sig,
-      process.env.STRIPE_WEBHOOK_SECRET
-    );
-
+    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
     console.log("🔥 Webhook reçu");
   } catch (err) {
     console.log("❌ Erreur signature :", err.message);
@@ -59,11 +49,12 @@ app.post("/webhook", express.raw({ type: "application/json" }), (req, res) => {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
 
-    db.collection("paiements").add({
-      email: session.customer_details?.email || "non fourni",
-      montant: session.amount_total / 100,
-      date: new Date(),
-    });
+  db.collection("paiements").add({
+  nom: session.customer_details?.name || "Non renseigné",
+  email: session.customer_details?.email || "",
+  montant: session.amount_total / 100,
+  date: new Date(),
+});
 
     console.log("💰 Paiement enregistré");
   }
@@ -71,13 +62,15 @@ app.post("/webhook", express.raw({ type: "application/json" }), (req, res) => {
   res.sendStatus(200);
 });
 
+
 // =========================
 // BODY PARSER
 // =========================
 app.use(express.json());
 
+
 // =========================
-// 💳 CREATE CHECKOUT SESSION
+// 💳 STRIPE SESSION
 // =========================
 app.post("/create-checkout-session", async (req, res) => {
   const { amount, email } = req.body;
@@ -87,29 +80,21 @@ app.post("/create-checkout-session", async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-
       customer_email: email,
-
-      line_items: [
-        {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: "Don association"
-            },
-            unit_amount: finalAmount
+      line_items: [{
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: "Don association"
           },
-          quantity: 1
-        }
-      ],
-
+          unit_amount: finalAmount,
+        },
+        quantity: 1,
+      }],
       mode: "payment",
 
-      success_url:
-        "https://plantes-tropicales-reuni-70561.web.app/success.html",
-
-      cancel_url:
-        "https://plantes-tropicales-reuni-70561.web.app/cancel.html"
+      success_url: "https://plantes-tropicales-reuni-70561.web.app/success.html",
+      cancel_url: "https://plantes-tropicales-reuni-70561.web.app/cancel.html",
     });
 
     res.json({ url: session.url });
@@ -126,5 +111,5 @@ app.post("/create-checkout-session", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log("🚀 Serveur lancé sur port " + PORT);
+  console.log("🚀 Serveur lancé");
 });

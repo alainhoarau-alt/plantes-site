@@ -2,163 +2,330 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faire un don - Les Ouvriers 974</title>
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* ========================= */
+/* PAGE */
+/* ========================= */
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:url("images/plante1.jpg") center/cover fixed;
+color:white;
+}
+
+/* ========================= */
+/* MENU MODERNE */
+/* ========================= */
+nav{
+position:sticky;
+top:0;
+z-index:999;
+background:rgba(0,0,0,0.70);
+backdrop-filter:blur(8px);
+padding:15px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,0.35);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 12px;
+font-weight:bold;
+padding:8px 14px;
+border-radius:8px;
+transition:0.3s;
+}
+
+nav a:hover{
+background:#1fa84a;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+.hero{
+padding:80px 20px;
+text-align:center;
+background:rgba(0,0,0,0.45);
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:20px;
+max-width:800px;
+margin:auto;
+line-height:1.6;
+}
+
+/* ========================= */
+/* BLOCS */
+/* ========================= */
+.section{
+max-width:1100px;
+margin:40px auto;
+padding:25px;
+background:rgba(0,0,0,0.60);
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+.section h2{
+text-align:center;
+font-size:32px;
+margin-bottom:25px;
+color:#7dff9d;
+}
+
+/* ========================= */
+/* CONFIANCE */
+/* ========================= */
+.trust{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.trust div{
+background:rgba(255,255,255,0.08);
+padding:18px;
+border-radius:12px;
+text-align:center;
+font-weight:bold;
+}
+
+/* ========================= */
+/* BOUTONS DONS */
+/* ========================= */
+.dons-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:18px;
+margin-top:20px;
+}
+
+.don-card{
+background:white;
+color:#222;
+padding:20px;
+border-radius:16px;
+text-align:center;
+}
+
+.don-card h3{
+font-size:30px;
+margin:0;
+color:#1fa84a;
+}
+
+.don-card p{
+margin:10px 0 18px;
+font-size:15px;
+}
+
+button{
+background:#1fa84a;
+color:white;
+border:none;
+padding:12px 22px;
+font-size:16px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.04);
+background:#16903d;
+}
+
+/* ========================= */
+/* MONTANT LIBRE */
+/* ========================= */
+.libre{
+text-align:center;
+margin-top:30px;
+}
+
+.libre input{
+padding:12px;
+width:220px;
+border:none;
+border-radius:10px;
+font-size:18px;
+text-align:center;
+margin-bottom:12px;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+footer{
+text-align:center;
+padding:30px;
+font-size:14px;
+background:rgba(0,0,0,0.65);
+margin-top:40px;
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+@media(max-width:700px){
+
+.hero h1{
+font-size:32px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+nav a{
+display:inline-block;
+margin:5px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
 <!-- MENU -->
 <nav>
-    <a href="index.html">Accueil</a>
-    <a href="association.html">Association</a>
-    <a href="plantes.html">Plantes tropicales</a>
-    <a href="marche.html">Marché</a>
-    <a href="dons.html">Dons</a>
-    <a href="contact.html">Contact</a>
+<a href="index.html">Accueil</a>
+<a href="association.html">Association</a>
+<a href="plantes.html">Plantes</a>
+<a href="marche.html">Marché</a>
+<a href="dons.html">Dons</a>
+<a href="contact.html">Contact</a>
 </nav>
 
 <!-- HERO -->
-<header class="hero">
-    <div class="hero-content">
-        <h1>💚 Soutenir notre association</h1>
-        <p>Chaque don aide à développer nos actions solidaires à MADAGASCAR</p>
-    </div>
-</header>
-
-<!-- CONTENU -->
-<section>
-    <h2>Pourquoi faire un don ?</h2>
-
-    <p>
-        L'association <strong>Les Ouvriers 974</strong> œuvre pour 
-        le développement d'actions solidaires à La Réunion et MADAGASCAR.
-    </p>
-
-    <p>Vos dons permettent de :</p>
-
-    <ul>
-        <li>🌱 Développer et donner accès à l'éducation</li>
-        <li>🤝 Soutenir des projets solidaires</li>
-        <li>📚 Sensibiliser à la biodiversité</li>
-        <li>🌍 Promouvoir l’agriculture locale</li>
-    </ul>
+<section class="hero">
+<h1>💚 Soutenez Les Ouvriers 974</h1>
+<p>
+Chaque don aide concrètement nos actions solidaires à Madagascar.
+Merci à chaque personne qui choisit d’aider.
+</p>
 </section>
 
-<!-- DON -->
-<section>
-
-    <h2>Faire un don</h2>
-    <p id="total-dons">💚 Paiement sécurisé via Stripe</p>
-    <p>Choisissez le montant que vous souhaitez offrir :</p>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>10€</h3>
-            <p>Un petit geste 🌱</p>
-            <button class="btn" onclick="payer(1000)">💚 Donner</button>
-        </div>
-
-        <div class="card">
-            <h3>25€</h3>
-            <p>Soutien utile 🤝</p>
-            <button class="btn" onclick="payer(2500)">💚 Donner</button>
-        </div>
-
-        <div class="card">
-            <h3>50€</h3>
-            <p>Impact concret 🌿</p>
-            <button class="btn" onclick="payer(5000)">💚 Donner</button>
-        </div>
-
-        <div class="card">
-            <h3>100€</h3>
-            <p>Soutien majeur 💚</p>
-            <button class="btn" onclick="payer(10000)">💚 Donner</button>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- DON LIBRE -->
-<section style="text-align:center; margin-top:30px;">
-    <h3>💚 Faire un don libre</h3>
-
-    <input 
-        type="number" 
-        id="montant" 
-        placeholder="Montant en €"
-        style="padding:10px; font-size:16px; width:200px; margin-bottom:10px;"
-    >
-
-    <br>
-
-    <button type="button" class="btn" onclick="payerLibre()" style="font-size:18px; padding:15px 25px;">
-        💳 Donner
-    </button>
-</section>
-
-<!-- CONTACT -->
-<section>
-
-    <h2>Autres moyens de soutien</h2>
-
-    <p>Vous pouvez aussi nous contacter directement pour :</p>
-
-    <ul>
-        <li>💳 Virement bancaire</li>
-        <li>🤝 Partenariats</li>
-        <li>🎁 Dons matériels</li>
-    </ul>
-
-    <a href="contact.html" class="btn">Nous contacter</a>
-
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-    <p>© Les Ouvriers 974</p>
+<!-- CONFIANCE -->
+<section class="section">
+<h2>Pourquoi donner ?</h2>
+<div style="text-align:center; margin-bottom:25px; font-size:20px; font-weight:bold;">
+💳 Carte Bancaire • Visa • Mastercard • Stripe sécurisé
+</div>
+<div class="trust">
+<div>🔒 Paiement 100% sécurisé Stripe</div>
+<div>⚡ Don en 1 minute</div>
+<div>📧 Confirmation par e-mail</div>
+<div>🤝 Association engagée</div>
 </div>
 
-<!-- 🔥 FIREBASE -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+</section>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAgNCQWXZMBtfP4OZ7iAgl1DoGb_AnFPJ8",
-    authDomain: "plantes-tropicales-reunion.firebaseapp.com",
-    projectId: "plantes-tropicales-reunion",
-    storageBucket: "plantes-tropicales-reunion.firebasestorage.app",
-    messagingSenderId: "309600533699",
-    appId: "1:309600533699:web:5b6e7d723e45fcb5dbf676"
-  };
+<!-- DONS -->
+<section class="section">
+<h2>Choisir un montant</h2>
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+<div class="dons-grid">
 
-  window.db = db;
-</script>
+<div class="don-card">
+<h3>5 €</h3>
+<p>Un geste utile</p>
+<button onclick="payer(5)">Donner</button>
+</div>
+
+<div class="don-card">
+<h3>10 €</h3>
+<p>Fournitures solidaires</p>
+<button onclick="payer(10)">Donner</button>
+</div>
+
+<div class="don-card">
+<h3>20 €</h3>
+<p>Soutien concret</p>
+<button onclick="payer(20)">Donner</button>
+</div>
+
+<div class="don-card">
+<h3>50 €</h3>
+<p>Action renforcée</p>
+<button onclick="payer(50)">Donner</button>
+</div>
+
+</div>
+
+<div class="libre">
+<h2>Montant libre</h2>
+<input type="number" id="montant" placeholder="Montant en €"><br>
+<button onclick="payerLibre()">Faire un don libre</button>
+</div>
+
+</section>
+
+<!-- MESSAGE -->
+<section class="section">
+<h2>Merci 💚</h2>
+<p style="text-align:center; font-size:18px; line-height:1.7;">
+Chaque contribution compte et participe directement à nos actions.
+Votre soutien fait la différence.
+</p>
+</section>
+
+<footer>
+Paiement traité par Stripe • Vos données bancaires restent sécurisées
+</footer>
 
 <!-- 💳 SCRIPT PAIEMENT -->
 <script>
 async function payer(montant) {
-  const res = await fetch("http://localhost:3000/create-checkout-session", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "SECRET123"
-    },
-    body: JSON.stringify({
-      amount: montant,
-      email: "client@test.com"
-    })
-  });
 
-  const data = await res.json();
-  window.location.href = data.url;
+  const email = prompt("Veuillez entrer votre adresse e-mail :");
+
+  if (!email || !email.includes("@")) {
+    alert("Veuillez saisir une adresse e-mail valide.");
+    return;
+  }
+
+  try {
+    const res = await fetch("https://plantes-api.onrender.com/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "SECRET123"
+      },
+      body: JSON.stringify({
+        amount: montant,
+        email: email
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert("Erreur lors de la création du paiement.");
+    }
+
+  } catch (error) {
+    alert("Erreur de connexion au serveur.");
+    console.error(error);
+  }
 }
 
 function payerLibre() {
@@ -169,7 +336,7 @@ function payerLibre() {
     return;
   }
 
-  payer(valeur * 100);
+  payer(valeur);
 }
 </script>
 
